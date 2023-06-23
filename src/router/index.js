@@ -1,24 +1,36 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import Main from '../views/Main.vue'
+import Login from "@/views/Login.vue";
+import Registration from "@/views/Registration.vue";
+import Department from "@/views/Department.vue";
+import Area from "@/views/Area.vue";
+
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/main',
+    name: 'main',
     component: Main
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
+  {
+    path: '/registration',
+    name: 'registration',
+    component: Registration
+  },
+  {
+    path: '/department',
+    name: 'department',
+    component: Department
+  },
+  {
+    path: '/area',
+    name: 'area',
+    component: Area
+  },
 ]
 
 const router = createRouter({
@@ -27,3 +39,7 @@ const router = createRouter({
 })
 
 export default router
+
+router.afterEach((to) => {
+  this.currentPath = to.path; // Обновляем текущий путь
+});
